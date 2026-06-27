@@ -61,7 +61,9 @@ const revealSelectors = [
 revealSelectors.forEach((selector, sectionIndex) => {
     document.querySelectorAll(selector).forEach((element, elementIndex) => {
         element.classList.add('reveal');
-        element.classList.add('reveal-emotion');
+        if (selector !== '.contact-item') {
+            element.classList.add('reveal-emotion');
+        }
         const delay = sectionIndex * 70 + elementIndex * 35;
         element.dataset.revealDelay = delay;
         element.style.transitionDelay = `${delay}ms`;
