@@ -29,7 +29,7 @@ a{
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--text); Into You
+            color: var(--text);
             line-height: 1.6;
             background-color: #f9f9f9;
             overflow-x: hidden;
@@ -44,6 +44,28 @@ a{
 
         section {
             padding: 100px 0;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            filter: blur(14px);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.9s ease;
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal.reveal-left {
+            transform: translateX(-40px) scale(0.98);
+        }
+
+        .reveal.reveal-right {
+            transform: translateX(40px) scale(0.98);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+            filter: blur(0);
         }
 
         h1, h2, h3, h4 {
