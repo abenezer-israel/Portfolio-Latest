@@ -78,14 +78,14 @@ if (contactForm && formStatus) {
             });
 
             if (response.ok) {
-                formStatus.textContent = 'Message sent successfully. Thank you for reaching out!';
+                formStatus.textContent = 'Thank you! Your message has been sent successfully. I will get back to you shortly.';
                 formStatus.classList.add('success');
                 contactForm.reset();
             } else {
                 throw new Error('Unable to send your message right now.');
             }
         } catch (error) {
-            formStatus.textContent = 'Sorry, your message could not be sent. Please email me directly at abenezerisrael23@gmail.com.';
+            formStatus.textContent = 'Sorry, your message could not be sent right now. Please email me directly at abenezerisrael23@gmail.com.';
             formStatus.classList.add('error');
         } finally {
             if (submitButton) {
