@@ -29,8 +29,13 @@
     <header>
         <div class="container header-container">
             <a href="#home" class="logo">Abenezer <span>Israel</span></a>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
             <nav id="mainNav">
                 <ul>
@@ -426,7 +431,7 @@
                     <form id="contactForm" action="https://formsubmit.co/abenezerisrael23@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="New portfolio contact message">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://abenezerisrael.vercel.app/">
+                        <input type="hidden" name="_next" value="https://abenezerisraelg.vercel.app/">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>

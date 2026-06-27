@@ -1,10 +1,43 @@
-// Mobile Menu Toggle
+// Theme toggle and mobile menu
 const menuToggle = document.getElementById('menuToggle');
 const mainNav = document.getElementById('mainNav');
+const themeToggle = document.getElementById('themeToggle');
 
-menuToggle.addEventListener('click', function() {
-    mainNav.classList.toggle('active');
-});
+const applyTheme = (theme) => {
+    document.body.setAttribute('data-theme', theme);
+    document.documentElement.style.colorScheme = theme;
+
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'dark' ? '#020617' : '#ffffff');
+    }
+};
+
+const savedTheme = localStorage.getItem('portfolio-theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('portfolio-theme', currentTheme);
+        applyTheme(currentTheme);
+    });
+}
+
+if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when clicking on a link
 const navLinks = document.querySelectorAll('nav a');
