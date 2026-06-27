@@ -839,6 +839,22 @@ a{
             box-shadow: var(--shadow);
         }
 
+        .form-status {
+            margin-top: 16px;
+            min-height: 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-status.success {
+            color: #16a34a;
+        }
+
+        .form-status.error {
+            color: #dc2626;
+        }
+
         .form-group {
             margin-bottom: 25px;
         }

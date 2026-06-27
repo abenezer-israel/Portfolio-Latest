@@ -428,10 +428,12 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/abenezerisrael23@gmail.com" method="POST">
+                    <form id="contactForm" action="https://formsubmit.co/ajax/abenezerisrael23@gmail.com" method="POST" accept-charset="UTF-8">
                         <input type="hidden" name="_subject" value="New portfolio contact message">
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://abenezerisraelg.vercel.app/">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://portfolio-latest.vercel.app/?success=1">
+                        <input type="hidden" name="_honey" value="">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
@@ -449,6 +451,7 @@
                             <textarea id="message" name="message" class="form-control" placeholder="How can I help you?" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
                 </div>
             </div>

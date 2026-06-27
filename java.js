@@ -49,16 +49,52 @@ navLinks.forEach(link => {
     });
 });
 
-// Smooth scrolling for anchor links
-// The contact form is submitted via FormSubmit.co, so we allow the browser form submission.
+// Contact form submission through FormSubmit
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
 
-// If you want a client-side notification instead, uncomment the lines below:
-// const contactForm = document.getElementById('contactForm');
-// contactForm.addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     alert('Thank you for your message! I will get back to you soon.');
-//     contactForm.reset();
-// });
+if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton ? submitButton.textContent : 'Send Message';
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = 'Message sent successfully. Thank you for reaching out!';
+                formStatus.classList.add('success');
+                contactForm.reset();
+            } else {
+                throw new Error('Unable to send your message right now.');
+            }
+        } catch (error) {
+            formStatus.textContent = 'Sorry, your message could not be sent. Please email me directly at abenezerisrael23@gmail.com.';
+            formStatus.classList.add('error');
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+    });
+}
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
