@@ -452,8 +452,20 @@
                             <textarea id="message" name="message" class="form-control" placeholder="How can I help you?" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
-                        <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
+
+                    <div id="formToast" class="toast-notification" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+                        <div class="toast-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="toast-content">
+                            <strong class="toast-title">Message Sent</strong>
+                            <p class="toast-message">Thank you for reaching out. I will get back to you shortly.</p>
+                        </div>
+                        <button type="button" class="toast-close" aria-label="Close notification">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

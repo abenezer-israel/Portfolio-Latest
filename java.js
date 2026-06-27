@@ -51,9 +51,49 @@ navLinks.forEach(link => {
 
 // Contact form submission through FormSubmit
 const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
+const toast = document.getElementById('formToast');
+let toastTimer;
 
-if (contactForm && formStatus) {
+function showToast(type, message) {
+    if (!toast) return;
+
+    const title = toast.querySelector('.toast-title');
+    const msg = toast.querySelector('.toast-message');
+    const icon = toast.querySelector('.toast-icon i');
+
+    toast.classList.remove('show', 'success', 'error');
+    toast.classList.add(type, 'show');
+    toast.setAttribute('aria-hidden', 'false');
+
+    if (title) {
+        title.textContent = type === 'success' ? 'Message Sent' : 'Submission Failed';
+    }
+
+    if (msg) {
+        msg.textContent = message;
+    }
+
+    if (icon) {
+        icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    }
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+        toast.setAttribute('aria-hidden', 'true');
+    }, 4200);
+}
+
+if (contactForm && toast) {
+    const toastClose = toast.querySelector('.toast-close');
+    if (toastClose) {
+        toastClose.addEventListener('click', () => {
+            toast.classList.remove('show');
+            toast.setAttribute('aria-hidden', 'true');
+            clearTimeout(toastTimer);
+        });
+    }
+
     contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -65,9 +105,6 @@ if (contactForm && formStatus) {
             submitButton.textContent = 'Sending...';
         }
 
-        formStatus.textContent = '';
-        formStatus.className = 'form-status';
-
         try {
             const response = await fetch(contactForm.action, {
                 method: 'POST',
@@ -78,15 +115,13 @@ if (contactForm && formStatus) {
             });
 
             if (response.ok) {
-                formStatus.textContent = 'Thank you! Your message has been sent successfully. I will get back to you shortly.';
-                formStatus.classList.add('success');
+                showToast('success', 'Thank you! Your message has been sent successfully. I will get back to you shortly.');
                 contactForm.reset();
             } else {
                 throw new Error('Unable to send your message right now.');
             }
         } catch (error) {
-            formStatus.textContent = 'Sorry, your message could not be sent right now. Please email me directly at abenezerisrael23@gmail.com.';
-            formStatus.classList.add('error');
+            showToast('error', 'Sorry, your message could not be sent right now. Please email me directly at abenezerisrael23@gmail.com.');
         } finally {
             if (submitButton) {
                 submitButton.disabled = false;
