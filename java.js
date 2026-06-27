@@ -61,7 +61,10 @@ const revealSelectors = [
 revealSelectors.forEach((selector, sectionIndex) => {
     document.querySelectorAll(selector).forEach((element, elementIndex) => {
         element.classList.add('reveal');
-        element.dataset.revealDelay = sectionIndex * 80 + elementIndex * 50;
+        element.classList.add('reveal-emotion');
+        const delay = sectionIndex * 70 + elementIndex * 35;
+        element.dataset.revealDelay = delay;
+        element.style.transitionDelay = `${delay}ms`;
     });
 });
 
@@ -69,15 +72,12 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const element = entry.target;
-            const delay = Number(element.dataset.revealDelay) || 0;
-            window.setTimeout(() => {
-                element.classList.add('active');
-            }, delay);
+            element.classList.add('active');
             observer.unobserve(element);
         }
     });
 }, {
-    threshold: 0.18
+    threshold: 0.25
 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
