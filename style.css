@@ -980,8 +980,8 @@ a{
 
         /* Footer */
         footer {
-            background: #ffffff;
-            color: var(--primary);
+            background: var(--primary);
+            color: #ffffff;
             padding: 80px 0 30px;
         }
 
@@ -1020,6 +1020,7 @@ a{
 
         .footer-links li {
             margin-bottom: 12px;
+            color: #ffffff;
         }
 
         .footer-links a {
