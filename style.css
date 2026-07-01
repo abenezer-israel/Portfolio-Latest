@@ -358,7 +358,7 @@ a{
 
         body[data-theme="dark"] .social-links a,
         body[data-theme="dark"] .footer-links a {
-            color: var(--accent);
+            color: #ffffff;
         }
 
         body[data-theme="dark"] .hero {
@@ -983,6 +983,19 @@ a{
             background: var(--primary);
             color: #ffffff;
             padding: 80px 0 30px;
+        }
+
+        body[data-theme="dark"] footer {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        body[data-theme="dark"] .footer-column h3,
+        body[data-theme="dark"] .footer-column p,
+        body[data-theme="dark"] .footer-links li,
+        body[data-theme="dark"] .footer-links a,
+        body[data-theme="dark"] .copyright {
+            color: #ffffff;
         }
 
         .footer-content {
