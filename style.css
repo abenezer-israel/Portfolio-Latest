@@ -670,12 +670,19 @@ a{
         }
 
         .project-tag {
-            background: #ecf0f1;
-            color: var(--text);
+            background: var(--surface-alt);
+            color: var(--primary);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        body[data-theme="dark"] .project-tag {
+            background: rgba(96, 165, 250, 0.16);
+            color: var(--text);
+            border-color: rgba(96, 165, 250, 0.25);
         }
 
         .project-links {
