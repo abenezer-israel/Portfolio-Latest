@@ -605,7 +605,7 @@ a{
             border-radius: 10px;
             padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            box-shadow: var(--shadow);
             transition: var(--transition);
             border-top: 4px solid transparent;
         }
