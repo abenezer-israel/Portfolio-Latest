@@ -305,6 +305,21 @@ a{
             border-bottom: 1px solid var(--border);
         }
 
+        body[data-theme="dark"] .theme-toggle,
+        body[data-theme="dark"] .menu-toggle {
+            background: var(--surface);
+            color: var(--primary);
+            border-color: var(--border);
+            box-shadow: 0 8px 20px rgba(2, 6, 23, 0.28);
+        }
+
+        body[data-theme="dark"] .theme-toggle:hover,
+        body[data-theme="dark"] .menu-toggle:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
         body[data-theme="dark"] .about,
         body[data-theme="dark"] .skills,
         body[data-theme="dark"] .services,
@@ -1098,10 +1113,12 @@ a{
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: white;
+                background: var(--surface);
+                color: var(--text);
                 box-shadow: var(--shadow);
                 display: none;
                 padding: 20px 0;
+                border: 1px solid var(--border);
             }
             
             nav.active {
