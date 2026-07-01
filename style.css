@@ -250,9 +250,25 @@ a{
             text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
-        .logo span {
+        .logo-image {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+        }
+
+        .logo-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo-text span {
             color: var(--accent);
         }
 
